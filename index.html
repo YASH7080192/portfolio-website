@@ -35,13 +35,13 @@
     /* Navbar */
     nav {
       position: fixed;
-      top: 20px;
+      top: 15px;
       left: 50%;
       transform: translateX(-50%);
-      width: 90%;
+      width: 92%;
       max-width: 1200px;
-      padding: 18px 40px;
-      background: rgba(13, 13, 31, 0.7);
+      padding: 16px 30px;
+      background: rgba(13, 13, 31, 0.8);
       backdrop-filter: blur(20px);
       border-radius: 60px;
       border: 1px solid var(--border);
@@ -58,12 +58,16 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
     .nav-links a {
       color: white;
-      margin: 0 20px;
       text-decoration: none;
       font-weight: 500;
       transition: 0.3s;
+      font-size: 15px;
     }
     .nav-links a:hover { color: var(--primary); }
 
@@ -75,11 +79,13 @@
       justify-content: center;
       text-align: center;
       position: relative;
+      padding: 0 20px;
     }
     .hero-content h1 {
       font-size: 5.5rem;
       font-weight: 800;
       margin-bottom: 15px;
+      line-height: 1.1;
     }
     .typing {
       font-size: 2.2rem;
@@ -103,10 +109,18 @@
       cursor: pointer;
       margin: 10px;
       transition: 0.4s;
+      text-decoration: none;
+      display: inline-block;
     }
-    .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,245,255,0.4); }
+    .btn:hover { 
+      transform: translateY(-5px); 
+      box-shadow: 0 15px 30px rgba(0,245,255,0.4); 
+    }
 
-    section { padding: 120px 8%; position: relative; }
+    section { 
+      padding: 100px 5%; 
+      position: relative; 
+    }
 
     h2 {
       text-align: center;
@@ -127,7 +141,10 @@
       margin: 0 auto;
       align-items: center;
     }
-    .about-text { font-size: 1.2rem; line-height: 2; }
+    .about-text { 
+      font-size: 1.2rem; 
+      line-height: 2; 
+    }
     .about-img img {
       width: 100%;
       border-radius: 25px;
@@ -182,25 +199,29 @@
       color: var(--primary);
       margin-bottom: 10px;
     }
-    .timeline-content span { color: #aaa; font-size: 0.9rem; }
+    .timeline-content span { 
+      color: #aaa; 
+      font-size: 0.9rem; 
+    }
 
-    /* Education */
-    .education-grid {
+    /* Education, Skills, Projects */
+    .education-grid, .skills-container, .projects-grid {
+      max-width: 1200px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
-      max-width: 1100px;
-      margin: 0 auto;
     }
-    .edu-card {
+    .edu-card, .skill, .project-card {
       background: var(--glass);
       padding: 35px;
       border-radius: 20px;
       border: 1px solid var(--border);
       text-align: center;
       transition: 0.4s;
+      backdrop-filter: blur(10px);
     }
-    .edu-card:hover {
+    .edu-card:hover, .skill:hover, .project-card:hover {
       transform: translateY(-15px);
       box-shadow: 0 20px 40px rgba(0,245,255,0.2);
     }
@@ -212,27 +233,6 @@
       margin-bottom: 20px;
     }
 
-    /* Skills & Projects same as before but better */
-    .skills-container, .projects-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-    .skill, .project-card {
-      background: var(--glass);
-      padding: 30px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-      transition: 0.4s;
-    }
-    .skill:hover, .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(0,245,255,0.2);
-    }
-
     footer {
       text-align: center;
       padding: 80px 20px;
@@ -240,12 +240,84 @@
       font-size: 1.1rem;
     }
 
+    /* ==================== RESPONSIVE DESIGN ==================== */
+
+    @media (max-width: 1200px) {
+      .hero-content h1 { font-size: 4.8rem; }
+      h2 { font-size: 3.4rem; }
+    }
+
     @media (max-width: 992px) {
-      .timeline::before { left: 30px; }
-      .timeline-item { width: 100%; left: 0 !important; padding-left: 70px; }
-      .timeline-item::after { left: 17px !important; }
-      .about-grid { grid-template-columns: 1fr; }
+      nav {
+        padding: 14px 25px;
+        flex-direction: column;
+        gap: 15px;
+        border-radius: 20px;
+        width: 90%;
+      }
+      .nav-links {
+        order: 3;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
       .hero-content h1 { font-size: 4rem; }
+      .typing { font-size: 1.9rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .timeline::before { left: 30px; }
+      .timeline-item { 
+        width: 100%; 
+        left: 0 !important; 
+        padding-left: 70px; 
+        padding-right: 20px;
+      }
+      .timeline-item::after { 
+        left: 17px !important; 
+        right: auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 12px 20px;
+        top: 10px;
+      }
+      .logo { font-size: 22px; }
+      .nav-links a { font-size: 14px; margin: 0 10px; }
+      .hero { padding: 0 15px; }
+      .hero-content h1 { font-size: 3.3rem; }
+      .typing { font-size: 1.6rem; }
+      .hero p { font-size: 1.1rem; }
+      .btn { padding: 12px 28px; font-size: 14px; }
+      h2 { font-size: 2.8rem; margin-bottom: 60px; }
+      section { padding: 80px 5%; }
+      .about-text { font-size: 1.1rem; }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        width: 95%;
+        padding: 10px 15px;
+        border-radius: 15px;
+      }
+      .logo { font-size: 20px; }
+      .nav-links {
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .nav-links a { font-size: 13px; margin: 0 8px; }
+      .hero-content h1 { font-size: 2.7rem; }
+      .typing { font-size: 1.4rem; }
+      .hero p { font-size: 1rem; }
+      .btn { 
+        padding: 10px 20px; 
+        font-size: 13px; 
+        margin: 8px;
+      }
+      h2 { font-size: 2.4rem; }
+      section { padding: 60px 5%; }
+      .timeline-item { padding-left: 60px; }
+      .timeline-content { padding: 20px; }
+      .edu-card, .skill, .project-card { padding: 25px; }
     }
   </style>
 </head>
@@ -275,14 +347,13 @@
       <p>Building next-level web experiences with React </p>
       <div>
       <a href="https://www.linkedin.com/in/yashvant-giri-686973383/" target="_blank">
-  <button class="btn">LinkedIn</button>
-</a>
-      
-       <a href="https://docs.google.com/document/d/1vEZehwpOwPoPQQ4VoGIpTcrHeVcUcWXA/edit?usp=sharing&ouid=100155649308721505534&rtpof=true&sd=true" download>
-  <button class="btn" style="background:transparent;border:2px solid var(--primary);color:white;">
-    Download Resume
-  </button>
-</a>
+        <button class="btn">LinkedIn</button>
+      </a>
+      <a href="https://docs.google.com/document/d/1vEZehwpOwPoPQQ4VoGIpTcrHeVcUcWXA/edit?usp=sharing&ouid=100155649308721505534&rtpof=true&sd=true" download>
+        <button class="btn" style="background:transparent;border:2px solid var(--primary);color:white;">
+          Download Resume
+        </button>
+      </a>
       </div>
     </div>
   </section>
@@ -293,9 +364,7 @@
     <div class="about-grid">
       <div class="about-text">
         <p>I am Yashvant Giri, a mca ai ml first year student with a strong passion for web development and modern technologies. I specialize in both frontend and backend development and enjoy creating responsive, user-friendly, and dynamic websites. </p>
-        <p>. I have hands-on experience with HTML, CSS, JavaScript, React, Node.js, MongoDB, and MySQL.
-
-I am continuously learning new technologies and improving my skills to build efficient and scalable web applications. My goal is to start my career as a Full Stack Web Developer and contribute to innovative projects that solve real-world problems.</p>
+        <p>. I have hands-on experience with HTML, CSS, JavaScript, React, Node.js, MongoDB, and MySQL.<br><br>I am continuously learning new technologies and improving my skills to build efficient and scalable web applications. My goal is to start my career as a Full Stack Web Developer and contribute to innovative projects that solve real-world problems.</p>
       </div>
       <div class="about-img">
         <img src="dp.jpeg" alt="yashvant">
@@ -318,18 +387,14 @@ I am continuously learning new technologies and improving my skills to build eff
         <div class="timeline-content">
           <h3>Leadership Role – Gayatri Parivar, Chhattisgarh</h3>
           <p><strong>Volunteer Leader / Youth Coordinator</strong> • 2024 november 1 month</p>
-          <span>Organized spiritual and social awareness programs
-
-Managed and coordinated community events</span>
+          <span>Organized spiritual and social awareness programs<br>Managed and coordinated community events</span>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-content">
           <h3>Frontend Developer Intern</h3>
           <p><strong>html css js react.js</strong> • 2024-25</p>
-          <span>Designed clean and responsive user interfaces using HTML, CSS & JavaScript
-
-Developed dynami</span>
+          <span>Designed clean and responsive user interfaces using HTML, CSS & JavaScript<br>Developed dynamic</span>
         </div>
       </div>
     </div>
@@ -371,7 +436,7 @@ Developed dynami</span>
     </div>
   </section>
 
-  <!-- Projects (same as before) -->
+  <!-- Projects -->
   <section id="projects">
     <h2>Featured Projects</h2>
     <div class="projects-grid">
@@ -380,13 +445,12 @@ Developed dynami</span>
         <div style="padding:25px;">
           <h3>E-Commerce Pro</h3>
           <p>Full MERN + Stripe + Admin Panel</p>
-          <div style="margin-top:20px;display:flex;gap:15px;">
+          <div style="margin-top:20px;display:flex;gap:15px;flex-wrap:wrap;">
             <a href="#" style="padding:10px 20px;background:#333;color:white;border-radius:50px;text-decoration:none;">GitHub</a>
             <a href="#" style="padding:10px 20px;background:linear-gradient(45deg,var(--primary),var(--secondary));color:black;border-radius:50px;text-decoration:none;">Live Demo</a>
           </div>
         </div>
       </div>
-      <!-- Add more projects -->
     </div>
   </section>
 
@@ -410,7 +474,7 @@ Developed dynami</span>
       "interactivity": {
         "events": { "onhover": { "enable": true, "mode": "repulse" } }
       }
-      });
+    });
 
     // Typing Animation
     const words = ["Full Stack Developer", "React Expert", "Problem Solver", "Freelancer"];
